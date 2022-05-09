@@ -22,23 +22,25 @@ main {
     height: 60.1rem;
 }
 
-main .blue {
+main .blue, .bluebox {
     background-color: blue;
 }
 
-main .red {
+main .red, .redbox {
     background-color: red;
 }
 
-main .green {
+main .green, .greenbox {
     background-color: green;
 }
 
 main aside {
     border-right: 5px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+}
+
+main aside div {
+    cursor: move;
 }
 
 main aside div, main .drag div {
@@ -72,4 +74,8 @@ header {
 
 footer {
     background-color: blue;
+}
+
+main .drag-over {
+    background-color: yellow;
 }

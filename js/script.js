@@ -1,25 +1,27 @@
-const asideBlue = document.querySelector("main aside .blue");
-const asideRed = document.querySelector("main aside .red");
-const asideGreen = document.querySelector("main aside .green");
-const draggablediv = document.querySelectorAll("main aside div");
+const box = document.querySelectorAll(".box");
+const redbox = document.querySelector(".redbox");
 
-let a = true;
-function dragAndDrop() {
-  for (let i = 0; i < draggablediv.length; i++) {
-    let x;
-    let y;
-    draggablediv[i].style.position = "absolute";
-    draggablediv[i].onmousedown = function () {
-      document.onmousemove = function (e) {
-        x = e.pageX;
-        y = e.pageY;
-        draggablediv[i].style.left = x - 20 + "px";
-        draggablediv[i].style.top = y - 20 + "px";
-      }
-    };
-  }
+box.forEach((element) => {
+  redbox.addEventListener("click", console.log("event.target"));
+  element.addEventListener("dragenter", dragEnter);
+  element.addEventListener("dragover", dragOver);
+  element.addEventListener("dragleave", dragLeave);
+  element.addEventListener("drop", drop);
+});
+function dragEnter(e) {
+  e.target.classList.add("drag-over");
 }
 
-dragAndDrop();
+function dragOver(e) {
+  e.target.classList.add("drag-over");
+}
 
-document.removeEventListener("mouseup", dragAndDrop, true);
+function dragLeave(e) {
+  e.preventDefault();
+  e.target.classList.remove("drag-over");
+}
+
+function drop(e) {
+  e.preventDefault();
+  e.target.classList.remove("drag-over");
+}
